@@ -10,6 +10,7 @@ Actualmente, se encuentran disponibles los siguientes elementos:
 |Java|:clock1: En progreso||
 |Python|:white_check_mark: Disponible|17/07/2024|
 |PowerShell|:white_check_mark: Disponible|16/07/2024|
+|Power Automate|:white_check_mark: Disponible|31/07/2024|
 
 #### Leyenda:
 - :clock1: El script se encuentra en desarrollo y estará disponible próximamente
