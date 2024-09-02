@@ -58,7 +58,7 @@ headers = {
 }
 
 # Envia las metricas generadas por el automatismo mediante POST
-response = requests.post(host_metricas, headers=headers, json=json.dumps(metricData))
+response = requests.post(host_metricas, headers=headers, json=metricData)
 
 # Verificar la respuesta
 print(f"Status Code: {response.status_code}")
