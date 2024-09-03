@@ -5,10 +5,10 @@ Actualmente, se encuentran disponibles los siguientes elementos:
 
 
 
-|                |Estado                          |Fecha actualización                         |
+|                |Estado                          |Última actualización                         |
 |----------------|-------------------------------|-----------------------------|
 |Java|:clock1: En progreso||
-|Python|:white_check_mark: Disponible|17/07/2024|
+|Python|:white_check_mark: Disponible|02/09/2024|
 |PowerShell|:white_check_mark: Disponible|16/07/2024|
 |Power Automate|:white_check_mark: Disponible|31/07/2024|
 
