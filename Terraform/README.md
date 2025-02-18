@@ -44,8 +44,8 @@ siguiente:
 
 ```hcl
 telemetry_country = "ES" # Código de país, según ISO de 2 caracteres
-telemetry_token = "2285bab2-9152-4b90-9cf8-6082953c6a10" # UUID del Token de Autenticación
-telemetry_workflow = "16a55b4a-e208-44e0-a5db-d8f2a52c17bd" # UUID del Flujo
+telemetry_token = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" # UUID del Token de Autenticación
+telemetry_workflow = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx" # UUID del Flujo
 ```
 
 Ejecución
