@@ -9,12 +9,8 @@ Sub EnvioMetricas()
     fecha_inicio_proceso = Format(Now, "yyyy-mm-dd hh:nn:ss")
     
     
-	
-	
     ' Flujo de procesamiento general
     ' ......
-	
-	
     
     
     ' Obtiene el tiempo actual
@@ -44,7 +40,6 @@ Sub EnvioMetricas()
     
         
     ' Crear el JSON de metricas
-    Dim metricas As String
     metricas = "{ " & vbCrLf & _
               "    ""id_ejecucion"": """ & uuid_ejecucion & """, " & vbCrLf & _
               "    ""fk_flujo"": """ & fk_flujo & """, " & vbCrLf & _
