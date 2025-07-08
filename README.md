@@ -7,7 +7,7 @@ Actualmente, se encuentra disponible la integración de métricas en los siguien
 |                                    | Estado                        | Última actualización |
 |------------------------------------|-------------------------------|----------------------|
 | GoLang                     | :white_check_mark: Disponible | 16/06/2025           |
-| Java                               | :clock1: En progreso          |                      |
+| Java                               | :white_check_mark: Disponible | 08/07/2025           |
 | JavaScript                                | :white_check_mark: Disponible | 12/06/2025           |
 | Power Automate                     | :white_check_mark: Disponible | 31/07/2024           |
 | PowerShell                         | :white_check_mark: Disponible | 16/07/2024           |
