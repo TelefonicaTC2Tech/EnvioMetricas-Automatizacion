@@ -11,7 +11,7 @@ Actualmente, se encuentra disponible la integración de métricas en los siguien
 | JavaScript                                | :white_check_mark: Disponible | 12/06/2025           |
 | Power Automate                     | :white_check_mark: Disponible | 31/07/2024           |
 | PowerShell                         | :white_check_mark: Disponible | 16/07/2024           |
-| Python                             | :white_check_mark: Disponible | 02/09/2024           |
+| Python                             | :white_check_mark: Disponible | 25/09/2025           |
 | [Terraform](./Terraform/README.md) | :white_check_mark: Disponible | 19/02/2025           |
 | VBA                                | :white_check_mark: Disponible | 26/02/2025           |
 
