@@ -60,6 +60,11 @@ headers = {
 # Envia las metricas generadas por el automatismo mediante POST
 response = requests.post(host_metricas, headers=headers, json=metricData)
 
+# IMPORTANTE: Si se necesita enviar los datos a través de un proxy, hay que utilizar esta forma de envío
+#proxies = { "http": "http://...", "https": "https://..."}
+#response = requests.post(host_metricas, headers=headers, json=metricData, proxies=property)
+
+
 # Verificar la respuesta
 print(f"Status Code: {response.status_code}")
 print(f"Response Body: {response.text}")

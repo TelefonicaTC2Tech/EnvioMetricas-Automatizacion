@@ -11,8 +11,8 @@ En la siguiente lista se muestra el listado de lenguajes soportados para la inte
 | JavaScript                                | :white_check_mark: | | 12/06/2025           |
 | Power Automate                     | :white_check_mark: | :white_check_mark: | 31/07/2024           |
 | PowerShell                         | :white_check_mark: | :white_check_mark: | 26/09/2025           |
-| Python                             | :white_check_mark: | :white_check_mark: | 25/09/2025           |
-| [Terraform](./Terraform/README.md) | :white_check_mark: | | 19/02/2025           |
+| Python                             | :white_check_mark: | :white_check_mark: | 01/10/2025           |
+| [Terraform](./Terraform/README.md) | :white_check_mark: | | 01/10/2025           |
 | VBA                                | :white_check_mark: | | 26/02/2025           |
 
 ---

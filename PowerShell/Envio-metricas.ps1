@@ -59,7 +59,11 @@ $jsonData = $metricData | ConvertTo-Json
   
 # Envia las metricas generadas por el automatismo mediante POST
 $response = Invoke-RestMethod -Uri $host_metricas -Method Post -Body $jsonData -ContentType 'application/json' -Headers $token
- 
+
+# IMPORTANTE: Si se necesita enviar los datos a través de un proxy, hay que utilizar esta forma de envío
+#$response = Invoke-RestMethod -Uri $host_metricas -Method Post -Body $jsonData -ContentType 'application/json' -Headers $token -Proxy 'http://ip:port'
+
+
 
 # Verificar la respuesta
 if ($response.statusCode -eq 201 -and $response.statusMessage -eq "OK") {
