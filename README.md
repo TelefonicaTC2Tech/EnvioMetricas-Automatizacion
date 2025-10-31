@@ -9,7 +9,7 @@ En la siguiente lista se muestra el listado de lenguajes soportados para la inte
 | GoLang                     | :white_check_mark: | | 16/06/2025           |
 | Java                               | :white_check_mark: | | 08/07/2025           |
 | JavaScript                                | :white_check_mark: | | 12/06/2025           |
-| .NET                     | :white_check_mark: | :white_check_mark: | 31/10/2025           |
+| .NET                     | :white_check_mark: | | 31/10/2025           |
 | Power Automate                     | :white_check_mark: | :white_check_mark: | 31/07/2024           |
 | PowerShell                         | :white_check_mark: | :white_check_mark: | 28/10/2025           |
 | Python                             | :white_check_mark: | :white_check_mark: | 01/10/2025           |
