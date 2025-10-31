@@ -1,13 +1,13 @@
 <#
     Author: Emilio Crespo Perán <emilio.crespoperan@telefonica.com>
-    Last updated: 16/7/2024
+    Last updated: 28/10/2024
 
     Script que envia datos de metricas en lenguaje PowerShell
 #>
 
 
 # Genera el identificador unico asociada a la ejecucion del automatismo
-$id_ejecucion = New-Guid
+$id_ejecucion = $id_ejecucion = (New-Guid).Guid
 
 
 # Ejecuta el proceso del automatismo
@@ -54,7 +54,7 @@ $token = @{
 }
 
 # Convierte los datos de metricas a formato JSON
-$jsonData = $metricData | ConvertTo-Json
+$jsonData = $metricData | ConvertTo-Json -Depth 10 -Compress
 
   
 # Envia las metricas generadas por el automatismo mediante POST
