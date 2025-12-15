@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "29bbc392-e747-4565-af93-31d64df6bb0c",
+		"name": "Metrics",
+		"description": "# Integración de métricas en Postman\n\nEsta colección contiene una petición de envío de métricas, cuya finalidad es la configuración y envío de métricas de los automatismos.\n\nTiene la particularidad en la que si se ejecutan varias peticiones de la colección y la última es para enviar métricas, es capaz de recoger el tiempo de inicio y de fin para obtener la duración total del procesamiento del automatismo.\n\nEsta característica es posible que no se encuentre en colecciones de Postman de peticionarios, por lo que para poder hacer uso de esta funcionalidad se necesita copiar el siguiente código en la zona de \"Scripts\" de la colección, concretamente en la pestaña \"Pre-request\":\n\n``` javascript\n// Si no existe el tiempo inicial, lo setea\nif (!pm.environment.get(\"fecha_inicio\")) {\n    let localDate = new Date();\n    let timestamp = localDate.getFullYear() + '-' + \n                    ('0' + (localDate.getMonth() + 1)).slice(-2) + '-' + \n                    ('0' + localDate.getDate()).slice(-2) + ' ' + \n                    ('0' + localDate.getHours()).slice(-2) + ':' + \n                    ('0' + localDate.getMinutes()).slice(-2) + ':' + \n                    ('0' + localDate.getSeconds()).slice(-2);\n    pm.environment.set(\"fecha_inicio\", timestamp);\n}\n\n ```\n\n<img src=\"https://content.pstmn.io/2b047a2d-d8f0-43cc-9193-852a1722f8c7/aW1hZ2UucG5n\" width=\"746\" height=\"304\">\n\nEl código anterior recoge el tiempo de inicio antes de lanzar la primera petición y las sucesivas peticiones no reemplazarán el valor al realizar una comprobación.\n\nEl siguiente paso es copiar la petición de \"Send Metrics\", donde está completamente configurado el envío de métricas a falta de agregar los datos asignados para el automatismo y que se explica en la siguiente parte.\n\n## Uso de la colección\n\n#### **Paso 1: Configura los datos de métricas**\n\nEl equipo del plan de automatización te proporcionará los datos de configuración de métricas correspondientes a tu automatismo, por lo que se te proporcionarán los siguientes datos obligatorios y puede que algunos datos de los campos opcionales dependiendo del automatismo:\n\n- fk_flujo (obligatorio)\n    \n- fk_metrica (opcional)\n    \n- Adjetivo1 (obligatorio)\n    \n- Adjetivo2 (opcional)\n    \n- Adjetivo3 (opcional)\n    \n- Adjetivo4 (opcional)\n    \n- AcumuladoMetrica (especial): Este valor puede que se te indique que sea fijo o que necesites calcularlo, por lo que deberás seguir las intrucciones oportunas del equipo de métricas\n    \n\nEstos datos de configuración los puedes indicar como variables en tu colección de Postman o indicarlos directamente en el body de la petición de envío de métricas.\n\nTen en cuenta que el body de la petición está prácticamente relleno y utilizando variables, por lo que estas no deberán modificarse para que el envío de métricas sea el correcto:\n\n- id_ejecucion\n    \n- FechaInicioEjecucion\n    \n- FechaFinEjecucion\n    \n- Timestamp\n    \n\n<img src=\"https://content.pstmn.io/535ddfb2-0d1d-4ad6-bfda-2ff316b1eef9/aW1hZ2UucG5n\" alt=\"\n<br>\" height=\"463\" width=\"658\">\n\n#### **Paso 2: Configura el envío de métricas**\n\nAdemás de la configuración de métricas, el equipo del plan de automatización te proporcionará los datos del host al que necesitas enviar los datos de métricas.\n\nEsta configuración deberás indicarla en las variables de tu colección, siendo las siguientes variables:\n\n- host_metrics\n    \n- token_metrics\n    \n\nRecuerda, una vez que se validen las métricas en el entorno de PRE deberás modificar el envío de métricas hacia el entorno de PRO, por lo que recomendamos que estos datos se configuren como variables en la colección.\n\n<img src=\"https://content.pstmn.io/1737f68c-0ea2-4a2d-bc41-c48a1e6ff4a2/aW1hZ2UucG5n\" width=\"839\" height=\"244\">\n\n## Repositorio de integración de métricas\n\nEsta colección de Postman para el envío de métricas forma parte de un repositorio de integración de métricas que se encuentra en [https://github.com/TelefonicaTC2Tech/EnvioMetricas-Automatizacion](https://github.com/TelefonicaTC2Tech/EnvioMetricas-Automatizacion)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30746821"
+	},
+	"item": [
+		{
+			"name": "Send Metrics",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let localDate = new Date();\r",
+							"let timestamp = localDate.getFullYear() + '-' + \r",
+							"                ('0' + (localDate.getMonth() + 1)).slice(-2) + '-' + \r",
+							"                ('0' + localDate.getDate()).slice(-2) + ' ' + \r",
+							"                ('0' + localDate.getHours()).slice(-2) + ':' + \r",
+							"                ('0' + localDate.getMinutes()).slice(-2) + ':' + \r",
+							"                ('0' + localDate.getSeconds()).slice(-2);\r",
+							"\r",
+							"pm.environment.set(\"fecha_fin\", timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "TokenAuth",
+						"value": "{{token_metrics}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_ejecucion\": \"{{$guid}}\",\r\n    \"fk_flujo\": \"test-flujo-1\",\r\n    \"fk_metrica\": \"test-metrica-1\",\r\n    \"Adjetivo1\": \"Test\",\r\n    \"Adjetivo2\": \"\",\r\n    \"Adjetivo3\": \"\",\r\n    \"Adjetivo4\": \"\",\r\n    \"AcumuladoMetrica\": \"1\",\r\n    \"FechaInicioEjecucion\": \"{{fecha_inicio}}\",\r\n    \"FechaFinEjecucion\": \"{{fecha_fin}}\",\r\n    \"fk_pais\": \"ES\",\r\n    \"NotaInterna\": \"Test nota interna\",\r\n    \"Timestamp\": \"{{fecha_fin}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host_metrics}}/WS/v2/api/AUTO_flujos_ejecuciones",
+					"host": [
+						"{{host_metrics}}"
+					],
+					"path": [
+						"WS",
+						"v2",
+						"api",
+						"AUTO_flujos_ejecuciones"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"requests": {},
+				"exec": [
+					"// Si no existe el tiempo inicial, lo setea\r",
+					"if (!pm.environment.get(\"fecha_inicio\")) {\r",
+					"    let localDate = new Date();\r",
+					"    let timestamp = localDate.getFullYear() + '-' + \r",
+					"                    ('0' + (localDate.getMonth() + 1)).slice(-2) + '-' + \r",
+					"                    ('0' + localDate.getDate()).slice(-2) + ' ' + \r",
+					"                    ('0' + localDate.getHours()).slice(-2) + ':' + \r",
+					"                    ('0' + localDate.getMinutes()).slice(-2) + ':' + \r",
+					"                    ('0' + localDate.getSeconds()).slice(-2);\r",
+					"\r",
+					"    pm.environment.set(\"fecha_inicio\", timestamp);\r",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host_metrics",
+			"value": "https://adm.pre.cloudportal.telefonicatech.com"
+		},
+		{
+			"key": "token_metrics",
+			"value": "11Dfmbeb-0430-4ffa-b1b0-dc1736d88e81"
+		}
+	]
+}
