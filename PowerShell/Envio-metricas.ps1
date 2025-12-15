@@ -7,7 +7,7 @@
 
 
 # Genera el identificador unico asociada a la ejecucion del automatismo
-$id_ejecucion = $id_ejecucion = (New-Guid).Guid
+$id_ejecucion = (New-Guid).Guid
 
 
 # Ejecuta el proceso del automatismo
@@ -72,3 +72,4 @@ if ($response.statusCode -eq 201 -and $response.statusMessage -eq "OK") {
 else {
     Write-Host "Error al registrar la métrica. Detalles: $($response | ConvertTo-Json -Depth 5)"
 } 
+
